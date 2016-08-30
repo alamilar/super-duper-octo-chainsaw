@@ -1,0 +1,49 @@
+version: '2'
+services:
+  db3:
+    container_name: db3
+    build: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/postgreDB:/var/lib/postgresql/data
+    restart: always
+
+  writer:
+    container_name: writer3
+    build: writer
+    depends_on:
+      - db3
+    volumes:
+      - ./writerDir:/opt/writer
+    restart: always
+
+  reader31:
+    container_name: reader31
+    build: reader
+    depends_on:
+      - db3
+    volumes:
+      - ./readerDir:/opt/reader
+    restart: always
+
+  reader32:
+    container_name: reader32
+    build: reader
+    depends_on:
+      - db3
+    volumes:
+      - ./readerDir:/opt/reader
+    restart: always
+
+  proxy:
+    container_name: proxy
+    build: proxy
+    depends_on:
+      - reader31
+      - reader32
+    volumes:
+      - ./proxyDir:/usr/local/etc/haproxy/
+    ports:
+      - "80:80"
+    restart: always

@@ -1,0 +1,5 @@
+Implementacja zadania 2:
+2. stworzyć nową wersje serwisu `reader`, która zwraca timestamp ostatniego logu odpowiedniego typu
+Baza konfiguruje się wykonując skrypty z db/docker-entrypoint-initdb.d
+W katalogu postgreDB zapisuje się baza PostgreSQL
+Do uruchomienia serwisów można użyć skryptu "RUNME.sh"

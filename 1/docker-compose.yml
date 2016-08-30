@@ -1,0 +1,23 @@
+version: '2'
+services:
+  db1:
+    build: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgreDB:/var/lib/postgresql/data
+    restart: always
+
+  writer1:
+    build: writer
+    depends_on:
+      - db1
+    restart: always
+
+  reader1:
+    build: reader
+    depends_on:
+      - db1
+    ports:
+      - "5000:5000"
+    restart: always

@@ -1,0 +1,6 @@
+0. serwis `writer` pisze logi do bazy
+   serwis `reader` udostępnia statystyki logów przez api restowe
+1. stworzyć konfigurację dla uruchomienia trzech kontenerów: `reader`, `writer`, `db`, połączonych ze sobą (z uwzględnieniem security)
+2. stworzyć nową wersje serwisu `reader`, która zwraca timestamp ostatniego logu odpowiedniego typu
+3. stworzyć konfigurację "zero downtime deploy", w której stara wersja serwisu `reader` zostanie zatrzymana dopiero po uruchomieniu nowej wersji
+4. stworzyć klienta serwisu `reader`, weryfikującego "zero downtime deploy"

@@ -1,0 +1,8 @@
+Implementacja zadania 4:
+4. stworzyć klienta serwisu `reader`, weryfikującego "zero downtime deploy"
+Klienta stworzyłem w Pythonie przy pomocy biblioteki Tkinter.
+Posiada 3 zakładki: Client, Benchmark i Settings
+W zakładce Client można podejrzeć ilość zdarzeń danego typu i czas ich ostatniego wystąpienia
+W zakładce Benchmark można odpalić ApacheBench dla danego hosta (1000 requestów) i uzyskać jego wyniki
+(dzięi czemu można sprawdzić dostępność usługi sprawdzając ilość Failed requests)
+W zakładce Settings można ustawić jakiego hosta chcemy odpytywać w zakładkach Client i Benchmark

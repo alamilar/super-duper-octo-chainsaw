@@ -1,0 +1,5 @@
+Implementacja zadania 1:
+1. stworzyć konfigurację dla uruchomienia trzech kontenerów: `reader`, `writer`, `db`, połączonych ze sobą (z uwzględnieniem security)
+Baza konfiguruje się wykonując skrypty z db/docker-entrypoint-initdb.d
+W katalogu postgreDB zapisuje się baza PostgreSQL
+Do uruchomienia serwisów można użyć skryptu "RUNME.sh"

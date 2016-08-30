@@ -1,0 +1,13 @@
+Implementacja zadania 3:
+3. stworzyć konfigurację "zero downtime deploy", w której stara wersja serwisu `reader` zostanie zatrzymana dopiero po uruchomieniu nowej wersji
+Baza konfiguruje się wykonując skrypty z db/docker-entrypoint-initdb.d.
+W katalogu postgreDB zapisuje się baza PostgreSQL.
+Do zapewnienia zero downtime deploy wykorzystałem HAProxy z dwoma instancjami readera.
+Pliki konfiguracyjne od HAProxy trzymane są w katalogu proxyDir, natomiast pliki readera i writera
+odpowiednio w readerDir i writerDir.
+Skrypt swap.sh w katalogu changer najpierw zmienia konfigurację HAProxy (usuwa jeden serwer),
+następnie podmienia kontener reader2, znowu zmienia konfigurację HAProxy przekierowując
+ruch na reader2, podmienia reader1, a następnie wraca do pierwotnego ustawienia
+(load balancing między oba readery).
+Pozwala to na uniknięcie braku dostępu do usługi (nie licząc krótkiego czasu potrzebnego HAProxy na przeładowanie konfiguracji).
+Do uruchomienia serwisów można użyć skryptu "RUNME.sh".
