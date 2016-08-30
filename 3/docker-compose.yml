@@ -3,8 +3,6 @@ services:
   db3:
     container_name: db3
     build: db
-    ports:
-      - "5432:5432"
     volumes:
       - ./postgreDB:/var/lib/postgresql/data
     restart: always

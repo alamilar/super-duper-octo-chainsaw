@@ -2,8 +2,6 @@ version: '2'
 services:
   db2:
     build: db
-    ports:
-      - "5432:5432"
     volumes:
       - ./postgreDB:/var/lib/postgresql/data
     restart: always
