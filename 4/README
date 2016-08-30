@@ -6,3 +6,10 @@ W zakładce Client można podejrzeć ilość zdarzeń danego typu i czas ich ost
 W zakładce Benchmark można odpalić ApacheBench dla danego hosta (1000 requestów) i uzyskać jego wyniki
 (dzięi czemu można sprawdzić dostępność usługi sprawdzając ilość Failed requests)
 W zakładce Settings można ustawić jakiego hosta chcemy odpytywać w zakładkach Client i Benchmark
+
+Z klienta można też korzystać w trybie terminalowym, należy go odpalić z katalogu readerClient poleceniem
+python main.py [argumenty], gdzie argumenty to:
+nazwa_funkcji adres_hosta
+
+obsługiwane funkcje to: counts - odpowiednik zakładki Client z wersji GUI
+bench - odpowiednik zakładki Benchmark z wersji GUI

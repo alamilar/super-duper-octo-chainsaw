@@ -1,3 +1,4 @@
+import sys
 import ttk
 import subprocess
 import Tkinter as tk
@@ -41,6 +42,7 @@ class Main:
         p = subprocess.Popen(['ab', '-c 10','-n 1000', self.host + '/stats'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1)
         for line in iter(p.stdout.readline, b''):
             self.widgets['bText'].insert(END, line)
+            self.widgets['bText'].update_idletasks()
 
 
     def prepareGUI(self):
@@ -186,7 +188,28 @@ class Main:
 
 
 
+def cmdLine():
+    print sys.argv
+    if sys.argv[1] == 'bench':
+        print 'Benchmarking host ' + sys.argv[2]
+        p = subprocess.Popen(['ab', '-c 10','-n 1000', sys.argv[2] + '/stats'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1)
+        for line in iter(p.stdout.readline, b''):
+            print line
+
+
+    if sys.argv[1] == 'counts':
+        rClient = readerClient(sys.argv[2])
+        logCounts = rClient.getCounts()
+        latestEvents = rClient.getLatestEvents()
+        print 'Type: ' + ' ' + 'Event count: ' + ' ' + 'Latest event: '
+        for logType, logCount in logCounts.iteritems():
+            print logType + '                  ' + str(logCount) + '        ' + latestEvents[logType]['timestamp']
+
+
 
 if __name__ == '__main__':
-    app = Main()
-    app.prepareGUI()
+    if len(sys.argv) == 1:
+        app = Main()
+        app.prepareGUI()
+    else:
+        cmdLine()
